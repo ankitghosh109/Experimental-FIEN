@@ -1,0 +1,119 @@
+.form {
+    padding: 32px;
+    background-color: var(--color-gray);
+    /* transform: scale(0.8); */
+}
+
+.topHeading {
+    font-family: "inter", sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+}
+
+.optionalContainer {
+    margin-top: 8px;
+    width: 416px;
+}
+
+.optionalContent {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    height: 24px;
+    width: 24px;
+    background-color: orange;
+    border: 1px solid rgba(255, 255, 255, 0.452);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.checkbox svg {
+    height: 18px;
+    width: 18px;
+    color: white;
+}
+
+.checkboxDescription {
+    padding-left: 8px;
+    font-family: "inter", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+}
+
+.termsOfService {
+    margin-top: 8px;
+    font-family: "inter", sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    font-style: normal;
+    width: 416px;
+}
+
+.termsOfService a {
+    color: orange;
+}
+.termsOfService a:hover {
+    text-decoration: underline;
+}
+
+.createAccountButton {
+    margin-top: 20px;
+    padding-inline: 16px;
+    padding-block: 2px;
+    background-color: white;
+    color: var(--color-gray);
+    height: 44px;
+    width: 414px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "inter", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+.createAccountButton:hover {
+    background-color: #bfbfbf;
+  color: white;
+}
+
+.loginContainer {
+    margin-top: 4px;
+}
+
+.loginContainer span {
+    font-family: "inter", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.loginButton {
+    margin-left: 4px;
+    font-family: "inter", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.loginButton:hover {
+ text-decoration: underline;
+}

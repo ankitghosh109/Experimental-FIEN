@@ -1,0 +1,414 @@
+<13-sept-2025
+react routing terms: there are two routing types routeconfig object and component routing. i am using route config object
+loader in route config => runs before render Data fetching before rendering and opration in dynamic routes parameters
+action in route config => runs before re-render and after form submission so you can data mutation and redirection.
+navigate() in component => used after render like: in components
+redirect() in route config => used before render like: in loaders, actions, and route definitions.
+<Navigate/> route config => it changes the route used as a element
+<Outlet/> in route config => required in parent route, used to ref and tell child routes element render here 
+index: true /child in route config => if the parent path is matched exactly, it will render this default child
+layout wrapper in route config => if the element has no path it means it is a wrapper layout it will wrap a child route element inside it whose route path is matched
+
+Custom css is used in big projects like css.modules and styled component css
+styled i prefer cuz it is clean , it makes component of a tag and its dynamic by props will make the css dynamic by javascript
+
+##useQuery() in React TanStack Query lib => very usefull thing it is a tool for managing server side state, means it manages the fetch calls and the response data from server, make the fetch and data managing easy you dont have to:
+ useState() => for managing the state of the fetched data
+ useEffect() => for fetching new data 
+ contextApi => for providing the data in components
+
+new terms that saw today that i want to know about in future: pagination and infinite scrolling
+
+tommorow todo: 
+watch this video about react query which is usefull: https://www.youtube.com/watch?v=KrruJTTwOgU
+watch this video about react.lazy(): https://youtu.be/fzLTHk4wr6E?si=ZmaDrpyO92ABxVBd
+try to plan and make the structure of starting page
+
+to study useQuery() and react.lazy()
+
+in the end what i did today:
+ i made 4 commit where i initialized the react vite, cleaned it and  installed tailwindcss setup
+ and last commit where i wrote a basic routing structure in route config of my hangout app
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+<14-09-2025
+learned about TanStack Query useQuery() return value and options,parameters: perfect library for data fetching and data managment called server side state manegement
+
+terms:
+stale => old data
+polling => technique that forcfully fetching data from a api at a regular interval, used when your server data is changing frequently, like in a trading app stockprice is changing, we can do it in useQuery() easyly. user dont have to mannualy reload, refresh, re-mount the component to get the updated data absolute no user intraction required
+pagination => 
+
+features: 
+handles the loading state and the error state in one hook
+uses cache so it doesnt has to fetch the same data again
+staleTime => after this time passes this hook re-fetches the data when the component remount or tab refocus after new data comes it re-render the component if the new data is updated than previous one
+refetchInterval => it is same exactly like staleTime but it doesnt need any user intraction like component re-mount and tab refocus it forcefully re-fetch the data after the time is done and updates the component and re-render like trading apps which doesnt need any user intraction to update the stock price. where user dont have to mannualy refresh or reload to se updated data
+garbage collection(gctime) => gc time starts when the component unmounts
+refetchIntervalInBackground => if true it fetches the data even the tab is not active or not focued. false means data will re-fetch only when tab is active or focued
+queryKey: [] is a dependency array, and used to call queryFn when the value of array changes it will run the queryFn like useEffect(callback,[dependencies values]) dependency array 
+queryFn:it is used to fetch data from api
+plac
+
+usefull structure of useQuery() hook: https://tanstack.com/query/latest/docs/framework/react/reference/useQuery
+const { data, ispending, isLoading, isError, error } = useQuery({
+    queryKey: ["posts"], => is also used for identidfy to store cachedata is behaves as key
+    queryFn: fetchPosts, => axios fucnction that has the logic of fetching data
+    staleTime: 1000 * 60 * 5,
+    refetchInterval: 1000 * 60*5
+    refetchIntervalInBackground: false
+    gctime: 1000 * 60*5
+    placeholderData: {id: "loading"} => it is used in place of data until new data is fetched form the api
+    keepPreviousData: true => previous data will show until new data comes works in pagination cuz cachedata in not defiend when the queryKey changes and in pagination queryKey is used
+  })
+
+
+to study pagination and use infinite-scrolling and reac.lazy() and axios 
+styled components and individual component scrolling and individual component resizing
+axios: https://youtu.be/osr9mUcdOMI?si=hokufp7sjOGPP-uH
+
+useQuery completed: it is only used for get method for other method we have to useMutation() hook
+
+useMutation is hard but we will use to manage cache also of use query. will not use only axios
+
+today i did'nt implimented anything in this project
+
+
+tommorow todo:
+learned about styled component: https://www.youtube.com/watch?v=vP5wLi3tbTs&list=PLwGdqUZWnOp1UMoSmcAugghzqKYKcJgfQ
+research and learn: how to do individual component resizing in react like discord
+try to impliment ui if possible
+
+pending todo:
+learn axios: https://youtu.be/osr9mUcdOMI?si=hokufp7sjOGPP-uH
+learn reac.lazy()
+research: infinite scrolling
+learn react redux
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+<18-09-2025
+today i finished learning about <svg/> tag in html which is used to draw svg i helped me to create profile status icons. masking the profile pic like discord 
+
+what i did in 4 days:
+i made a basic layout of of my application
+i made a Custom scoller Thumb in privateSidebar 
+
+and made a component resizer for privateSidebar : when i made resizer by me it has some problem so the solution which i applied is that we have to apply some properties to resizerHandle 
+{cursor: ew-resize !important; => !important is for highest specificity till inline styles, it makes sure to make the pointer ew-resize on mouseDown on the resizer handle  
+user-select: none !important; => disable selection of any element,text, img so it does'nt intrupt while resizing
+-webkit-user-drag: none !important;} => these properties allow user to disable to drag the handle, 
+e.currentTarget.setPointerCapture?.(e.pointerId) => this setPointerCapture method is very amazing it is giving the targeted element the id of the pointer to if the pointer leaves the element it still recives the events fired by that pointer, and any other element cant able to recive events from this pointer. if you release it by this method resizerRef.current?.releasePointerCapture?.(e?.pointerId) => then any element can recives the events from the pointer where it is inside of 
+onDragStart={(e) => e.preventDefault()} => extra safety inside the resizerhandle so no one can drag the resizerHandle. e.preventDefault() means preventDefault default behaviour of dragging the element
+its a robust resizer now
+
+made a dm button component like discord in listDm
+
+pending todo:
+useMutation() hook
+learn axios: https://youtu.be/osr9mUcdOMI?si=hokufp7sjOGPP-uH
+learn reac.lazy()
+research: infinite scrolling
+learn contextApi in react
+learn auth in react
+learn react Forms
+learn react redux
+learn typescript
+learn nextjs
+
+tommorow todo:
+make a userPanel Component where options for user
+
+today commits: i did one commit
+"Add a basic layout of Application and Make Resizer, customScroller and ListDm-Component"
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+<23-09-2025
+In last five days:
+ I did a commit "Add UserPanel Component" in (22-sept-2025) where i created a userPanel component   
+ Added some details to privateLayout and privateSidebar
+ Created ListMenu Component where i can list menu option like friends and shop option
+ Created a PrivateMainContent layout component. where i added navigation tabs for friends but the layout is not completed i have to make the a component to list friends and a filtering logic and Add friend fucnctionality
+ learned some new things about css like :has(), :focus-within 
+
+pending todo:
+CSS Grid
+useMutation() hook
+learn axios: https://youtu.be/osr9mUcdOMI?si=hokufp7sjOGPP-uH
+learn reac.lazy()
+research: infinite scrolling
+learn contextApi in react
+learn auth in react
+learn react Forms
+learn react redux
+useReducer 
+learn typescript
+learn nextjs
+custom hooks in react
+useLayoutEffect hook
+mutationObserver in react
+
+tommorow todo:
+  make a ListPeople/Friend Component to list the people which are in my friend list and make layout for add friend tab
+  learn about css Grid if you can
+
+today commits: i did one new commit
+"Add details in PrivateLayout Component and Create PrivateMainContent Component"
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+<2-10-2025
+First of All:
+i had not commited for 8 daysss. i last commited on (23-sept-2025)
+
+why i not commit forrr 8 dayes :
+so the story is my mouse not working well so my speed was very slow cuz my mouse causing problem to keyboard also and both stucking and lagging i have to restart the computer every time it stucked so thats why i have to read and concentrate to the problem every time and then ig in (26-sept-2025) my mouse completely stoped working cuz i tried to open and fix it but its wire detached and it stoped working.
+so i have to order a new mouse which i ordered in (26-sept-2025) but it arrived at (29-sept-2025) evening.  
+in this time i could not code my coding stopped completely
+
+what wass i doingggg forrrr fuckinnnnn 8 dayes :
+(23-sept-2025) to (26-sept-2025) my mouse is not working well still i made a ListFriend Component. which i didn't commited cuz i thought that i should make a context menu for it then i should make a commit cuz i thought it is a part of ListFriend component do i should commit it together
+Created ListFriend Component so i can list friends details
+
+(26-sept-2025) to (29-sept-2025) i cant code till my new mouse delivery, so i thought that i should not wait and waste time, and do something so i thought i should learn theory
+so i learned:
+learned redux and redux-toolkit : https://www.youtube.com/playlist?list=PLfEr2kn3s-br2OoBNSR7S5eJ-kcEeUQcG
+learned typescript but i have to learn more about it: https://www.youtube.com/playlist?list=PL8p2I9GklV44fWXJGEsBvR_ylJClgdVAN
+
+(29-sept-2025) to Today: 
+Created ClickTrapContainer component where i can trap clicks and created multi-level nested nested dropdown/contextMenu in this component :
+where we successsssFullyyyy applyied multi-level nested dropdown/contextMenu it took me five or more dayes to do it every day i faced a new problem when i am applying it and i learned a lot from making it it isss very complex but remember never give up just try to do it just tryyyyy and learnnnnn
+
+Created ClickTrapContainerContext Component for storing Context/State for ClickTrapContainer do i can bridge from ListFriend Component to ClickTrapContainer Component vise-versa
+
+features of this dropdown/contextmenu:
+it is multi-level nested dropdown/contextMenu
+it will never overflow from the screen
+we can use it in any component
+
+something new a learned about in these dayes: 
+React Render + Commit Cycle (Simplified)
+
+Step-1.Render Phase
+React calls your function component.
+JSX gets converted into a "virtual DOM tree".
+No actual DOM mutations happen yet.
+
+Step-2.Commit Phase
+React applies DOM updates (in the real DOM).
+Browser will eventually paint the screen.
+After commit → React runs lifecycle hooks (useLayoutEffect first, then useEffect).
+
+paint means everything is done but Browser not Converted real dom into pixels
+
+difference between useLayoutEffect and useEffect
+useLayoutEffect: is synchronous means it will run like Render Phase > React applies DOM updates (in the real DOM) but Browser is not painted yet> it will run then Browser painted the Dom
+useEffect: is asynchronous means Render Phase > Commit Phase > Browser painted the Dom > then it will run
+
+means useLayoutEffect alwayes runs before useEffect cuz it is synchronous
+
+pending todo:
+CSS Grid
+useMutation() hook
+learn axios: https://youtu.be/osr9mUcdOMI?si=hokufp7sjOGPP-uH
+learn reac.lazy()
+research: infinite scrolling
+learn contextApi in react
+learn auth in react
+learn react Forms
+learn react redux
+learn useReducer 
+learn typescript
+learn nextjs
+learn custom hooks in react
+learn useLayoutEffect hook
+learn mutationObserver in react
+learn revise tanstack useQuery() hook when using 
+learn react portal
+learn useSuspense
+learn RTK redux
+
+tommorow todo:
+make login&register Page Component or make a private chat area Component
+learn about css Grid if you can
+
+today commits: i did one new commit
+"Add ListFriend Component and Create a multi-level nested dropdown/contextMenu feature in ClickTrapContainer Component"
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+<9-10-2025
+what i am doin from last 7 days, i last commited on (2-oct-2025)
+
+1st thing:
+i was making frontend of login and register page, so user have a interface where the can create account and login.
+i also applyed basic client side validation in login and register page.
+
+1st thing took me 4 dayes till (6-oct-2025)
+
+2nd thing: 
+i was doin revision of express js section by procodder,  it took me two dayes till today (9-oct-2025). 
+
+pending todo:
+CSS Grid
+useMutation() hook
+learn axios: https://youtu.be/osr9mUcdOMI?si=hokufp7sjOGPP-uH
+learn reac.lazy()
+research: infinite scrolling
+learn contextApi in react
+learn auth in react
+learn react Forms
+learn react redux
+learn useReducer 
+learn typescript
+learn nextjs
+learn custom hooks in react
+learn useLayoutEffect hook
+learn mutationObserver in react
+learn revise tanstack useQuery() hook when using 
+learn react portal
+learn useSuspense
+learn RTK redux
+
+
+tommorow todo:
+initialize a express js project in backend following mvc architecture or/and setup api in frontend
+
+today commits: i did one new commit
+"Create Login and Register page Components with Client-Side-Validation"
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+<11-10-2025
+
+what i am doin last day, i last commited on (9-oct-2025) 
+
+what i was doin last day and today:
+
+1st thing:
+i was revising mongodb section by procodder, it took me two dayes last day and today. 
+
+2nd thing: 
+i was learning basics about axios and tanstack query's useQuery and useMutation, so i can impliment data fetching (get,post,put,patch..etc.) 
+
+first i created axios instance in (axiosInstance.js):
+const axiosInstance = axios.create({
+  baseURL: 'https://api.example.com', // Base part of every request
+  headers: {                          // Default headers
+    'Content-Type': 'application/json',
+  },
+});
+
+you can fetch data without a axios instance but if you create a axiosinstance and use that for fetching this will help you a lot: 
+you can config this so you dont have to add all default option in every fetch,
+it gives you a option where you can give a baseUrl so you dont have to write it every time,
+it gives you a option of headers where you can put your default headers so you dont have to attach it to every fetch request, 
+it has a property of interceptor where you can give a callback it will run before any request sent and before reciving the responce and is a centeralize place where all the error come in second callback you give,
+you can use this instance to use any fetch method like axiosInstance.post("/route" , data), 
+better error handling if you send a request using normal fetch() and server gives 404 500 this will not give error but axios will give you error,
+axios has cleanre syntax you code will look clean,
+axios dont use fetch() behind the scene it uses xhr and xhr has its own features.
+
+
+
+then i created (authAPI.js) where i fetch data related to authentication like login logout register using axiosInstance:
+
+
+then i created (useAuthQueries.js) where i created hooks like useRegister and useLogin using tanstack query's useMutation hook, so you dont have to write useMutation hook boilerPlate whenever you want to fetch data. 
+
+
+then i wrapped all contextProvider and routerProvider in appProvider provider by QueryClientProvider imported from "@tanstack/react-query" and create a new QueryClient() and passed it into QueryClientProvider so you can use tanstack query hooks in any component:
+QueryClient() is the central brain / manager of all your queries and caches.
+It stores and tracks:
+cached API data,
+query keys,
+fetching states,
+retry logic,
+and more. 
+
+basic about useMutation() hook:
+const {
+  data,
+  error,
+  isError,
+  isIdle,
+  isLoading,
+  isPaused,
+  isSuccess,
+  failureCount,
+  failureReason,
+  mutate,
+  mutateAsync,
+  reset,
+  status,
+} = useMutation({
+  mutationFn,
+  cacheTime,
+  mutationKey,
+  networkMode,
+  onError,
+  onMutate,
+  onSettled,
+  onSuccess,
+  retry,
+  retryDelay,
+  useErrorBoundary,
+  meta,
+})
+you can google if you want to learn any of the use of return value and config option,
+i will tell you about the important one:
+mutationFn: here you can give a function which will run when you call mutate()
+mutate() is a return value of use mutation hook you can call it by giving a data or empty mutate() when it is called it will run the mutationFn: 
+like useQuery you dont have to give mutationKey it is optional it is a identifer and QueryClient use this key to cache the data,
+data the return value whatever mutationfn will return will store here for some time.
+
+
+pending todo:
+CSS Grid
+useMutation() hook
+learn axios: https://youtu.be/osr9mUcdOMI?si=hokufp7sjOGPP-uH
+learn reac.lazy()
+research: infinite scrolling
+learn contextApi in react
+learn auth in react
+learn react Forms
+learn react redux
+learn useReducer 
+learn typescript
+learn nextjs
+learn custom hooks in react
+learn useLayoutEffect hook
+learn mutationObserver in react
+learn revise tanstack useQuery() hook when using 
+learn react portal
+learn useSuspense
+learn RTK redux
+
+tommorow todo:
+initialize a express js project in backend following mvc architecture
+
+today commits: i did one new commit
+"Setup Axios and TanStack Query for clean (server state management)"
+
+

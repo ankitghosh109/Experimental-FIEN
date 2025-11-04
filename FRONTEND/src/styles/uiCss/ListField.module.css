@@ -1,0 +1,72 @@
+.FieldContainer {
+ margin-top: 20px;
+}
+
+.labelContainer {
+    margin-bottom: 8px;
+    font-family: "inter",sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+
+.required {
+    padding-left: 4px;
+    color: var(--color-red-500);
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.inputWrapper {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--color-darkGray);
+}
+
+.inputWrapper:has(input:focus) {
+    border: 1px solid orange;
+}
+
+.inputWrapper input {
+    padding-inline: 10px;
+    padding-block: 12px;
+    width: 414px;
+    height: 44px;
+    outline: none;
+}
+
+.helperTextContainer {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-red-500);
+    width: 414px
+}
+
+.helperTextContainer .message {
+    font-family: "inter", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.aboutInput {
+    font-family: "inter", sans-serif;
+    font-size: 12.3px;
+    line-height: 18px;
+    font-style: normal;
+    font-weight: 100;
+    pointer-events: none;
+    transition: all 0.4s ease;
+    width: 414px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;;
+}

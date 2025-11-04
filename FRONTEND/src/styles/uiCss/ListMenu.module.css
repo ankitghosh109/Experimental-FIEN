@@ -1,0 +1,59 @@
+.menuOptionContainer {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.menuButton {
+  display: flex;
+width: 100%;
+  align-items: center;
+  /* justify-content: center; */
+  height: 36px;
+  padding: 8px 16px 8px 8px;
+  min-width: 0;
+  border-radius: 8px;
+}
+
+.menuButton:hover {
+  background-color: var(--color-lightGray);
+}
+.menuButton:hover .menuText {
+  color: white;
+}
+
+.menuButton.active {
+  background-color: var(--color-lightGray);
+
+}
+
+.menuButton.active .menuText,
+.menuButton.active .menuIcon {
+  color: white;
+}
+
+.menuButtonContent {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menuIcon{
+  color: var(--text-color);
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.menuText{
+  color: var(--text-color);
+  font-size: 16px;
+  font-family: "inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
+}

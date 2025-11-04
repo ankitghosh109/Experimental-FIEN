@@ -1,0 +1,197 @@
+.form {
+    padding: 32px;
+    background-color: var(--color-gray);
+}
+
+.centeringWrapper {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* .body {
+    margin-top: 20px;
+} */
+
+.headerPrimary {
+    font-family: "inter", sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    margin-bottom: 8px;
+}
+
+.headerSecondary{
+    font-family: "inter", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--text-color);
+}
+
+.emailOrPhoneFieldContainer {
+ margin-top: 24px;
+}
+
+.passwordFieldContainer {
+    margin-top: 20px;
+} 
+
+.labelContainer {
+    margin-bottom: 8px;
+    font-family: "inter",sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+
+.required {
+    padding-left: 4px;
+    color: var(--color-red-500);
+}
+
+.inputWrapper {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--color-darkGray);
+}
+
+.inputWrapper:has(input:focus) {
+    border: 1px solid orange;
+}
+
+.inputWrapper input {
+    padding-inline: 10px;
+    padding-block: 12px;
+    width: 414px;
+    height: 44px;
+    outline: none;
+}
+
+.forgotButton {
+    display: block;
+    margin-top: 4px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: "inter", sans-serif;
+    font-style: normal;
+    line-height: 16px; 
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.forgotButton:hover {
+    text-decoration: underline;
+}
+
+.LoginButton {
+    margin-bottom: 8px;
+    padding-inline: 16px;
+    padding-block: 2px;
+    background-color: white;
+    color: var(--color-gray);
+    height: 44px;
+    width: 414px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: "inter", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+}
+.LoginButton:hover {
+    background-color: #bfbfbf;
+  color: white;
+}
+
+.registerContainer {
+    margin-top: 4px;
+}
+
+.registerContainer span {
+    font-family: "inter", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    line-height: 16px;
+    font-weight: 400;
+    color: var(--text-color);
+}
+
+.registerButton {
+    margin-left: 4px;
+    font-family: "inter", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.registerButton:hover {
+ text-decoration: underline;
+}
+
+.qrLogin {
+    width: 240px;
+    height: 344px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.qrLoginInner {
+    margin-bottom: 32px;
+}
+
+.qrHeading {
+    margin-bottom: 8px;
+    font-family: "inter", sans-serif;
+    font-size: 24px;
+    line-height: 30px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.qrSubtext {
+    font-family: "inter", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.qrCode {
+    padding: 8px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.signinWithKeyButton {
+    font-family: "inter", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    font-style: normal;
+    font-weight: 500;
+    color: orange;
+    cursor: pointer;
+    height: 44px;
+    padding-inline: 16px;
+    padding-block: 2px;
+}
+
+.signinWithKeyButton:hover {
+    text-decoration: underline;
+}

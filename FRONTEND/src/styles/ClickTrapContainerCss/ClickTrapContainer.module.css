@@ -1,0 +1,154 @@
+.clickTrapContainer{
+    position: absolute;
+    top: 0;  
+  left: 0;   
+  height: 100vh;
+  width: 100vw;
+    pointer-events: auto;
+}
+.clickTrapContainer.trap {
+  position: absolute;
+  top: 0;  
+  left: 0;   
+  height: 100vh;
+  width: 100vw;
+  pointer-events: auto;
+}
+
+.contextMenu { 
+    pointer-events: auto;
+    cursor: auto;
+}
+
+.focused{
+    pointer-events: auto;
+}
+
+.menu {
+    max-width: 320px;
+    min-width: 188px;
+    height: auto;
+    max-height: calc(100vh - 32px);
+    background-color: var(--color-darkGray);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    display: flex;
+}
+
+.scroller {
+    flex-grow: 1;
+    padding: 8px 0 8px 8px ;
+    overflow-y: scroll;
+}
+
+.scroller::-webkit-scrollbar {
+    width: 10px;
+    margin: 3px;
+}
+
+.scroller::-webkit-scrollbar-track {
+  background: transparent; /* Track background */
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  border-radius: 7px;
+  border: 3px solid transparent; 
+  background-clip: content-box;
+}
+
+.menuItem {
+    display: flex;
+    padding: 8px;
+    line-height: 18px;
+    font-family: "inter" , sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    color: white;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.menuItem:hover{ 
+    background-color: var(--color-lightGray);
+}
+
+.menuItem.colorDanger {
+    color: color-mix(in oklab, hsl(1.417 calc(1*86.395%) 71.176% /1) 100%, #000 0%)
+}
+
+.menuItem.colorDanger:hover {
+    background-color: color-mix(in oklab,hsl(355.636 calc(1*64.706%) 50% /0.0784313725490196) 100%,hsl(0 0% 0% /0.0784313725490196) 0%);
+}
+
+.label { 
+    width: 100%;
+}
+
+.subtext {
+    font-family: "inter" , sans-serif;
+    font-size: 11px;
+    line-height: 16px;
+    font-style: normal;
+    font-weight:300;
+    margin-top: 2px;
+    color: var(--text-color)
+}
+
+.separator {
+    color: white;
+    background-color: var(--border-color);
+    height: 1px;
+    margin: 8px;
+}
+
+
+.submenuPaddingContainer {
+    padding-inline: 8px;
+}
+
+/* ********************** */
+
+.popoutScroller {
+    background-color: var(--color-gray);
+    pointer-events: auto;
+}
+
+.popoutScroller {
+    /* flex-grow: 1; */
+    overflow-y: scroll;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.popoutScroller::-webkit-scrollbar {
+    width: 8px;
+    margin: 3px;
+}
+
+.popoutScroller::-webkit-scrollbar-track {
+  background: transparent; /* Track background */
+}
+
+.popoutScroller::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  border-radius: 7px;
+  border: 2px solid transparent; 
+  background-clip: content-box;
+}
+
+.Option {
+    padding: 12px;
+    font-family: "inter", sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    font-style: normal;
+    font-weight: 400;
+    color: white;
+    cursor: pointer;
+}
+
+.Option:hover {
+    background-color: var(--color-lightGray);
+}

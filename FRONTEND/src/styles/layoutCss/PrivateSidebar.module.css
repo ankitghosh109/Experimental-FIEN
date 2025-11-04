@@ -1,0 +1,184 @@
+.sidebarList {
+  display: flex;
+  flex-direction: column;
+  min-width: 192px;
+  max-width: 360px;
+  background-color: var(--color-darkGray);
+  position: relative;
+}
+
+.outline {
+  border-left: 1px solid var(--border-color); /* light thin line */
+  border-top-left-radius: 30px;
+}
+
+.topicContainer {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  min-height: 55px;
+  width: 100%;
+  gap: 8px;
+}
+
+
+.topicIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 18px;
+  
+}
+.topicIcon {
+  font-size: 32px;
+  line-height: 32px;
+  vertical-align: center;
+  color: #ADAEB4;;
+}
+
+.topicName {
+  font-family: "inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: -6px;
+ line-height: 20px;
+  color: #ADAEB4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 8px;
+}
+
+.topicSeprator{
+  height: 1px;
+ background-color: var(--border-color);
+ margin-left: 8px;
+ margin-bottom: 6px;
+}
+
+
+.sectionDivider{
+ height: 1px;
+ background-color: var(--border-color);
+ margin-left: 8px;
+ margin-block: 8px;
+}
+
+.searchBarContainer{
+  height: 30px;
+  width: 100%;
+  padding-inline: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.searchBarSeprator{
+  height: 1px;
+ background-color: var(--border-color);
+ margin-inline: 8px;
+ margin-top: 8px;
+ 
+}
+
+.searchBar {
+  height: 30px;
+  flex: 1;
+  background-color: var(--color-gray);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding-inline: 11px;
+  padding-block: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.searchBar:hover {
+  background-color: var(--color-lightGray);
+  color: white;
+}
+
+.searchBarContent  {
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "inter", sans-serif;
+  font-style: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.menuOptionContainer {
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-top: 2px;
+}
+
+.directMessages {
+  display: flex;
+  align-items: center;
+  height: 18px;
+  margin: 0 8px 4px 16px;
+}
+
+
+.headerText {
+  width: 100%;
+  margin-right: 8px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.headerText:hover {
+  color: white;
+}
+
+.createDmIcon {
+  color: var(--text-color);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+
+
+.scroller{
+  flex-grow: 1;
+  margin-bottom: 50px;
+  padding-bottom: 16px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.scroller::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scroller::-webkit-scrollbar-track {
+  background: transparent; /* Track background */
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  background-color: var(--color-darkGray);
+  border-radius: 6px;
+  border: 2px solid var(--color-darkGray); /*Space around thumb */
+  transition: background-color 0.3s;
+}
+
+.scroller:hover::-webkit-scrollbar-thumb {
+  background-color: #74757e; /* Scrollbar color */
+}
+
+.dmContainer{
+  list-style: none;
+  padding-left: 0; 
+}

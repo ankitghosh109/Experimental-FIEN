@@ -1,0 +1,27 @@
+.resizerHandle {
+  width: 4px;
+  cursor: ew-resize;
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+
+  /* helpful for pointer events on touch / prevent browser gestures */
+  touch-action: none;
+  -webkit-user-drag: none;
+}
+
+.resizerHandle:hover {
+  background-color: var(--border-color);
+}
+
+/* global-enforced state while resizing.
+   We add/remove this class on document.body via the module's generated classname:
+*/
+.resizing,
+.resizing * {
+  cursor: ew-resize !important;
+  user-select: none !important;
+  -webkit-user-drag: none !important;
+}

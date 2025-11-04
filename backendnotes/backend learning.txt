@@ -1,0 +1,315 @@
+<12-10-2025
+i initialized Express JS backend and i will write backend also from know.
+
+what i did in this initialization:
+i created the main file server.js, 
+in server.js i used cors external package to handle cors error,
+i used express.json() if any data comes which has content type json it will parse it and attach it to req.body,
+then i created routes for "/api/v1/auth" in authRoutes.js,
+in authRoutes.js i created two endpoint "/register" and "/login" and handled them using registerUser and loginUser controller,
+which i made and exported from authController.js
+
+
+learnt:
+about projecion in mongodb
+about cursor
+about transaction & ACID principal in mongodb
+about validation in mongodb
+about schema in mongodb
+about JSONschema in mongodb
+about mongodump & mongorestore in mongodb
+about mongoexport & mongoimport in mongodb
+
+pending todo:
+learn gridfs in mongodb
+learn aggregate in mongodb
+learn indexing in mongodb
+learn sharding in mongodb
+learn replication in mongodb
+learn clustring in mongodb
+learn reverse-proxy
+learn MCP
+
+tommorow todo:
+intigrate database using mongoose/mongodb and write logic for /register and /login endpoints 
+
+today commits: i did one new commit
+"Initialize Express JS server with CORS, JSON parsing, and Auth routes"
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+learnt: 
+about modal in mongoose
+about schema in mongoose
+about query object in mongoose
+about document object in mongoose
+about populate and nested populate in mongoose
+about virtuals properties getter and setters in mongoose
+about custom methods on ducument in mongoose
+about custom methods on modal in mongoose
+about middleware in mongoose
+about document middleware in mongoose
+about query middleware in mongoose
+about modal middleware in mongoose
+about versioning & optimistic concurrency in mongoose
+
+to learn:
+timeseries in mongodb
+geospatial in mongodb
+unix domain socket
+CDN
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+learnt 
+about openssl
+about sha256 algorithm
+about createHash() in crypto module
+about signed and unsigned cookie in crypto module
+about mac and hmac in cryptography
+about diff between mac/hmac and digital signature in cryptography
+about createHmac() in crypto module
+about signing and unSigning cookie by adding hmac using cookie parser library
+
+about hashing password using createhash in crypto module
+about key derivation function for hashing password by pbkdf2() in crypto module
+about key derivation function like argon2, bcrypt, pbkdf2 in cryptography
+about randomBytes() in crypto module
+about key derivation function for hashing password by bcrypt() in bcrypt library
+about genSalt() in bcrypt library
+about hash() in bcrypt library
+about .compare() in bcrypt library
+
+about .sign() in jwtwebtoken library
+about .verify() in jwtwebtoken library
+about .decode() in jwtwebtoken library
+
+about .markModified() for updation of nested data in a document in mongoose
+about .set() for updation of nested data in a document in mongoose
+about updating nested array or object in mongoose and mongodb
+about array operation in mongodb
+
+about how to create session in mongodb
+about how to autherise session in mongodb
+
+about Auto-Deleting Documents in Mongodb
+about TTL index in mongodb
+
+about sending email using nodemailer library
+about .createTransport() in nodemailer library
+about .sendMail() in nodemailer library
+%s in javascript 
+
+about sending email using custom domain in resend.com
+about sending email using custom domain in resend library
+
+what is Oauth 
+what is Oauth 2.0 and openIdConnect
+create project on google cloud console
+use google openIdConnect to authenticate the user
+Google OpenID steps => https://developers.google.com/identity/openid-connect/openid-connect
+    -> Setup openID on developer console.
+    -> Make a request to google authorization server (Login & Allow consent).
+    -> It will redirect to the client app with code (valid for few minutes).
+    -> Use that code and make a fetch request to get and Information.
+
+use window.open() to open a popup in javascript
+how to open a popup for google login
+javascript JSON.styingify() formated
+
+how to verify id_token provider by google oauth
+how to verify id_token maunally using public key https://www.googleapis.com/oauth2/v3/certs#
+how to verify id_token using google auth library
+
+how to fetch if token using google auth library
+how to generate authUrl using google auth library
+how to fetch userinfo using access token https://openidconnect.googleapis.com/v1/userinfo
+how to costomize consent and select account prompt page in in generateAuthUrl() using google auth library
+error handling in google auth 
+
+intigrating google oauth using passport.js library
+
+what are grant type in google Oauth 2.0
+how to use implicit grant to onetap login with google
+how to fix id_token fragment problem using gsi
+GSI vs FedCM
+
+impimenting implicit google login with gsi in react using @react-oauth/google library
+
+to learn:
+logic gates 
+HTTP vs SDK 
+research how to create a server that uses custom domain for sending email
+research how Oauth works
+rsa algorithm
+what is iframe tag
+login with github in application
+what is auth0
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+learnt:
+types of access control
+about RBAC in authorization
+
+to learn: 
+new Set() in javascript
+What is Google Zanzibar and OpenFGA
+
+what is tuple relationship based
+auth0 playground https://play.fga.dev/sandbox/?store=github
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+learnt
+what is redis [redis MD]
+data types in redis [redis MD]
+CRUD operation with string in redis cli [redis MD]
+time to live in redis
+database management in redis [redis MD]
+organizing redis keys with namespacing and file globbing in redis [redis MD]
+
+connect redis in node JS by redis lib https://www.npmjs.com/package/redis
+client.quit() in redis lib 
+Creating getJSON() and setJSON() custom Methods on redis client in redis lib
+
+operations with redisJSON data-type [redis MD]
+making session using cashing
+use cases of redis cashing
+
+search by value 
+redis search and indexing [redis MD]
+redis text searching 
+redis numeric searching
+
+What is Fuzzy and advance Search in Redis [redis MD]
+
+scan command in redis [redis MD]
+difference between keys and scan in redis 
+
+Lists Data Type in redis [redis MD]
+set Data Type in redis [redis MD]
+hash Data Type in redis [redis MD]
+
+what is pub/sub messaging in redis [redis MD]
+
+authentication in redis [redis MD]
+
+Eviction Policies in Redis [redis MD]
+
+to learn
+what is acl in redis 
+more redis topics to learn [redis MD]
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+why security is imporant in web application [security MD]
+
+understanding .env File in Node.js [security MD]
+what to put in .env file [security MD]
+
+common mongo injection attacks in mongodb [security MD]
+spply input validation of read type querys with zod to avoid mongo injection by sanitizing the input in mongodb using zod lib 
+
+about same-orgin policy [security MD]
+
+what is xss attack [security MD]
+xss attack methods [security MD] 
+Fix XSS Vulnerability caused by HTML Using DOMPurify lib in server : const window = new JSDOM("").window;
+                                                      const purify = DOMPurify(window);
+jsdom lib used for createing a dom in node js for using DOMPurify lib
+
+types of xss attack [security MD]
+about Reflected XSS Attack
+about dom based xss attack 
+
+What is Content Security Policy(csp) [security MD]
+csp directives list [security MD]
+csp directives values [security MD]
+how to Report CSP Violations to our server 
+how to use inline scripts with hash in csp 
+how to use inline scripts with nonce in csp 
+
+what is clickjacking and how to prevent it [security MD]
+
+what is domain attribute on cookies [security MD]
+why and how editing host file [security MD]
+
+Creating an HTTPS Express Server Using OpenSSL self-signed [security MD]
+
+about same-site cookie attribute [security MD]
+
+to learn: 
+what is owasp 
+watch this video for advance csp concept https://www.youtube.com/watch?v=eFbFMqaqSAk 
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+learnt:
+AWS s3 bucket [s3-bucket.md]
+benifits of AWS S3 Bucket [s3-benefits.md]
+
+1 skp
+
+AWS cli and installation in windows using msi [aws-cli-intro.md]
+AWS S3-cli commands [s3-cli-commands.md]
+
+AWS S3api [aws-s3api.md]
+AWS S3api-cli commands [s3-api-commands.md]
+manage AWS S3 bucket policy using S3api-cli [managing-bucket-policy.md]
+
+AWS Cloudshell [aws-cloudshell.md]
+
+Signed URL in AWS S3 [signed-url.md] 
+Signed URL components in AWS S3 [signed-url-components.md] 
+
+IAM in AWS [iam-in-aws.md]
+
+IAM Policies [iam-policies.md]
+IAM policy vs S3 bucket policy [iam-policies-vs-s3-bucket-policies.md]
+full billing access in IAM policy [full-billing-access.md]
+
+IAM Roles [iam-roles.md]
+
+Install AWS-Cli in linux [install-aws-cli.md]
+
+AWS SDK for using S3 in Node.js client-s3[aws-s3-sdk-setup.md]
+CRUD operations in nodejs using AWS SDK for S3 client-s3 [s3-crud-operations.md]
+
+S3 Upload Progress using AWS SDK/lib-storage in Node.js 
+
+create get and put signed URL using node.js [course]
+create signed URL using AWS presigner library [course]
+
+AWS S3 Bucket pricing [https://aws.amazon.com/s3/pricing/]
+
+What is CDN [what-is-cdn.md]
+What is AWS Cloudfront [what-is-cloudfront.md]
+
+Cache Invalidation in CloudFront [course]
+
+secure files in cloudfront using signed url [course]
+
+AWS cloudfront pricing [https://aws.amazon.com/cloudfront/pricing/]
+
+
+folder structure and clean architecture:https://www.youtube.com/watch?v=oNlMrpnUSFE
+
+
+to be continued noting: https://app.procodrr.com/web/courses/66c89b1104aec61c27d12b08?chapter=67433df8296835c301fb0f23
+
+

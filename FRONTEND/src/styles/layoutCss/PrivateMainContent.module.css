@@ -1,0 +1,227 @@
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  background-color: var(--color-gray);
+}
+
+.navigation {
+  padding: 8px 8px 8px 16px;
+  min-height: 56px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.children {
+  display: flex;
+  align-items: center;
+}
+
+.iconWrapper {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  font-size: 18px;
+}
+
+.titleWrapper {
+  margin-right: 8px;
+}
+
+.title {
+  font-family: "inter" , sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  color: white;
+}
+
+.dotSeparator {
+  color: hsl(240 calc(1*4%) 60.784% /0.2);
+  margin-inline: 4px;
+}
+
+.tabBar {
+  display: flex;
+}
+
+.tabBar > * {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tabBar > *:not(:last-child) {
+  margin-inline: 8px;
+  padding-block: 4px;
+  padding-inline: 12px;
+  color: var(--text-color);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-family: "inter", sans-serif;
+  cursor: pointer;
+  transition: background-color 0.22s ease,color 0.22s ease;
+}
+
+.tabBar > *:not(:last-child):hover {
+  background-color: var(--color-lightGray);
+  color: white;
+}
+
+.tabBar > *:not(:last-child).active{
+  background-color: var(--color-lightGray);
+  color: white;
+}
+
+.tabBar > :last-child {
+  margin-inline: 8px;
+  padding-block: 4px;
+  padding-inline: 12px;
+  color: var(--color-gray);
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  font-family: "inter", sans-serif;
+  background-color: white;
+  cursor: pointer;
+  transition: background-color 0.22s ease,color 0.22s ease;
+}
+.tabBar > :last-child:hover {
+  background-color: #bfbfbf;
+  color: white;
+}
+
+.tabBody {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0px;
+}
+
+.peopleColumn {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  height: 100%;
+}
+
+.searchBarContainer{
+  margin: 12px 16px 8px 24px;
+}
+
+.searchBar{
+  height: 100%;
+  width: 100%;
+}
+
+.searchBarContent{
+   display: flex;
+   align-items: center;
+   gap: 4px;
+   padding-left: 4px;
+   min-height: 44px;
+   width: 100%;
+   background-color: var(--color-darkGray);
+   border-radius: 8px;
+   border: 1px solid var(--border-color);
+}
+
+.searchIcon {
+  height: 34px;
+  width: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.searchIcon svg {
+  width: 16px;
+}
+
+.searchInput {
+  width: 100%;
+  padding-block: 1px;
+  padding-right: 10px;
+  border: none;
+  outline: none;
+  caret-color: white;
+  color: white;
+}
+
+.searchInput::placeholder {
+  color: var(--text-color);
+}
+
+.searchBarContent:has(.searchInput:focus){
+ border-color: white;
+}
+
+.searchBarContent.hasValue {
+  padding-right: 4px;
+}
+
+.searchBarContent.hasValue > .searchInput {
+  padding-right: 0;
+}
+
+.clearButton {
+  height: 34px;
+  width: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.clearButton svg {
+  width: 16px;
+}
+
+.clearButton:hover {
+  color: white;
+}
+
+.peopleList {
+  flex-grow: 1;
+  padding-bottom: 8px;
+  overflow-y: scroll;
+}
+
+.peopleList::-webkit-scrollbar {
+    width: 14px;
+    margin: 3px;
+}
+
+.peopleList::-webkit-scrollbar-track {
+  background: transparent; /* Track background */
+}
+.peopleList::-webkit-scrollbar-thumb {
+  background-color: var(--text-color);
+  border-radius: 7px;
+  border: 3px solid var(--color-gray); 
+  /* background-clip: content-box; */
+}
+
+.sectionTitle {
+  margin-block: 16px;
+  margin-left: 24px;
+  margin-right: 20px;
+  font-family: "inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  color: var(--text-color);
+}

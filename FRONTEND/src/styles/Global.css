@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  --color-lighterGray: #5050503b;
+  --color-lightGray: #3c3c3c;
+  --color-gray: #212121;
+  --color-darkGray: #181818;
+  /* --color-darkerGray: */
+
+  --text-color: #ADAEB4;
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  --color-white: #ffffff;
+}
+  
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: var(--color-darkGray);
+  user-select: none;
+  overflow-x: hidden;
+
+
+}

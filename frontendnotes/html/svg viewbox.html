@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SVG Mask Playground</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      background: #f5f5f5;
+      padding: 30px;
+    }
+    svg {
+      border: 1px solid #ccc;
+      background: rgb(63, 0, 0);
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    label {
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    input[type=range] {
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>SVG Mask Playground</h2>
+
+  <!-- The SVG with image and mask -->
+  <svg id="demo" viewBox="0 0 200 200" width="200" height="200">
+    <defs>
+      <mask id="circleMask">
+        <!-- Black background hides everything -->
+        <rect width="200" height="200" fill="black"/>
+        <!-- White circle shows area -->
+        <circle id="maskCircle" cx="100" cy="100" r="60" fill="white"/>
+      </mask>
+    </defs>
+
+    <!-- Image masked -->
+    <image href="https://picsum.photos/200" width="200" height="200"
+           mask="url(#circleMask)" />
+  </svg>
+
+  <!-- Controls -->
+  <div class="controls">
+    <label>
+      X
+      <input id="cx" type="range" min="0" max="200" value="100">
+    </label>
+    <label>
+      Y
+      <input id="cy" type="range" min="0" max="200" value="100">
+    </label>
+    <label>
+      Radius
+      <input id="r" type="range" min="10" max="100" value="60">
+    </label>
+    <label>
+      Opacity
+      <input id="opacity" type="range" min="0" max="1" value="1" step="0.1">
+    </label>
+    <label>
+      Color
+      <input id="color" type="color" value="#ffffff">
+    </label>
+  </div>
+
+  <script>
+    const circle = document.getElementById("maskCircle");
+
+    // update on input change
+    document.querySelectorAll("input").forEach(input => {
+      input.addEventListener("input", () => {
+        circle.setAttribute("cx", document.getElementById("cx").value);
+        circle.setAttribute("cy", document.getElementById("cy").value);
+        circle.setAttribute("r", document.getElementById("r").value);
+        circle.setAttribute("fill", document.getElementById("color").value);
+        circle.setAttribute("fill-opacity", document.getElementById("opacity").value);
+      });
+    });
+  </script>
+</body>
+</html>

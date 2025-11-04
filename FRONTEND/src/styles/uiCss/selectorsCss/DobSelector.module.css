@@ -1,0 +1,71 @@
+.birthdayInputs {
+    margin-block: 20px;
+}
+
+.legend {
+    margin-bottom: 8px;
+    font-family: "inter",sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+.legend.error {
+    color: var(--color-red-500);
+}
+
+.errorMessage {
+    color: var(--color-red-500);
+    font-family: "inter", sans-serif;
+    font-size: 12px;
+    line-height: 20px;
+    font-style: italic;
+    font-weight: 500;
+
+}
+
+.required {
+    padding-left: 4px;
+    color: var(--color-red-500);
+}
+
+.inputs {
+    width: 100%;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.monthContainer {
+    width: 35%;
+}
+.dayContainer {
+    width: 30%;
+}
+.yearContainer {
+    width: 30%;
+}
+
+.selectionWrapper {
+    display: flex;
+    gap: 8px;
+    padding-block: 8px;
+    padding-left: 12px;
+    padding-right: 8px;
+    background-color: var(--color-darkGray);
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    height: 44px;
+    font-family: "inter", sans-serif;
+    font-size: 16px;
+    line-height: 18px;
+    font-style: normal;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.placeholder {
+    flex-grow: 1;
+    text-align: left;
+}
