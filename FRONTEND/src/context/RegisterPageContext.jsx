@@ -110,7 +110,7 @@ export const RegisterPageContextProvider = ({ children }) => {
           errorData[key] = rule.message
           return true
         }
-        if (rule.pattern && !rule.pattern.test(value)) {
+        if (rule.pattern && !rule.pattern.test(value.trim())) {
           errorData[key] = rule.message
           return true
         }
