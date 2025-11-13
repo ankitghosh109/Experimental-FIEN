@@ -25,7 +25,7 @@ export const error_for_fields = {
   },
   date_of_birth_underage: {
     code: "DATE_OF_BIRTH_UNDERAGE",
-    message: "You need to be 13 or older in order to use Discord.",
+    message: "You need to be 13 or older in order to use FIEN.",
   },
   date_of_birth_future: {
     code: "DATE_OF_BIRTH_FUTURE",
@@ -53,5 +53,21 @@ export const error_for_fields = {
     code: "PASSWORD_ZXCVBN_SEQUENCES_LIKE_ABC_ARE_EASY_TO_GUESS",
     message:
       "Too weak: don\u2019t use easily guessable sequences like \u2018abc\u2019 or \u20186543\u2019.",
+  },
+  password_startswith_space: {
+    code: "PASSWORD_STARTSWITH_SPACE",
+    message: "you cant start password with space",
+  },
+  password_endswith_space: {
+    code: "PASSWORD_ENDSWITH_SPACE",
+    message: "you cant end password with space",
+  },
+  password_three_spaces_inarow: {
+    code: "PASSWORD_THREE_SPACES_INAROW",
+    message: "you cant put three spaces in a row",
+  },
+  invalid_login: {
+    code: "INVALID_LOGIN",
+    message: "Login or password is invalid",
   },
 }

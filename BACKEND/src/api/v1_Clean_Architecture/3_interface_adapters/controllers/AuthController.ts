@@ -2,8 +2,11 @@ import mongoose from "mongoose"
 import type { Request, Response } from "express"
 import type RegisterUserUseCase from "../../2_application/usecases/RegisterUserUseCase"
 import type LoginUserUseCase from "../../2_application/usecases/LoginUserUseCase"
-import type { RegisterBody } from "../../types/registerBodyDTO.types"
+import type { RegisterReqBody } from "../../types/authController/registerReqBody.types"
 import { registerFormValidator } from "../form_validation/registerFormValidator"
+import { z } from "zod/v4"
+import type { LoginReqBody } from "../../types/authController/loginReqBody.types"
+import { loginFormValidator } from "../form_validation/loginFormValidation"
 
 export default class AuthController {
   private registerUserUseCase: RegisterUserUseCase
@@ -20,11 +23,11 @@ export default class AuthController {
   async register(req: Request, res: Response) {
     try {
       const { email, global_name, username, password, date_of_birth } =
-        req.body as RegisterBody
+        req.body as RegisterReqBody
 
       const {
         success,
-        data: formValidationResult,
+        data: sanitizedData,
         error,
       } = registerFormValidator({
         email,
@@ -35,16 +38,25 @@ export default class AuthController {
       })
 
       if (!success) {
-        return res.end()
+        console.log(error)
+        return res
+          .status(400)
+          .json({ error: z.flattenError(error).fieldErrors })
       }
-
       const UseCaseResponse = await this.registerUserUseCase.execute(
-        formValidationResult
+        sanitizedData
       )
+      if (!UseCaseResponse.success) {
+        if (UseCaseResponse.error) {
+          return res
+            .status(400)
+            .json({ error: z.flattenError(UseCaseResponse.error).fieldErrors })
+        }
+      }
 
       res.status(201).json({
         success: true,
-        // userId: result.id
+        data: UseCaseResponse.data,
       })
     } catch (err: any) {
       console.log(err)
@@ -54,8 +66,19 @@ export default class AuthController {
 
   async login(req: Request, res: Response) {
     try {
-      const { email, password } = req.body
-      const result = await this.loginUserUseCase.execute({ email, password })
+      const { login, password } = req.body as LoginReqBody
+
+      const {
+        success,
+        data: sanitizedData,
+        error,
+      } = loginFormValidator({ login, password })
+
+      if (!success) {
+        return res.end()
+      }
+
+      const UseCaseResponse = await this.loginUserUseCase.execute(sanitizedData)
       res.status(200).json({ success: true, data: result })
     } catch (err: any) {
       res.status(401).json({ success: false, error: err.message })

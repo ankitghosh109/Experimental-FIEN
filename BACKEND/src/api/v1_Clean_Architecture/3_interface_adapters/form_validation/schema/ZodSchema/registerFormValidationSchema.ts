@@ -17,8 +17,34 @@ export const registerFormValidationSchema = z.object({
   password: z.string().superRefine((password, context) => {
     const passwordLowerCased = password.toLowerCase()
 
+    if (passwordLowerCased.startsWith(" ")) {
+      context.addIssue({
+        code: "custom",
+        message: error_for_fields.password_startswith_space.message,
+      })
+      return
+    }
+
+    // Rule: must not end with a space
+    if (passwordLowerCased.endsWith(" ")) {
+      context.addIssue({
+        code: "custom",
+        message: error_for_fields.password_endswith_space.message,
+      })
+      return
+    }
+
+    // Rule: must not contain 3 or more consecutive spaces
+    if (/ {3,}/.test(passwordLowerCased)) {
+      context.addIssue({
+        code: "custom",
+        message: error_for_fields.password_three_spaces_inarow.message,
+      })
+      return
+    }
+
     // 🧠 Rule 1: Too short
-    if (password.length < 8) {
+    if (passwordLowerCased.length < 8) {
       context.addIssue({
         code: "custom",
         message: error_for_fields.password_small.message,

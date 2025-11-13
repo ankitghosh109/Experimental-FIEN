@@ -1,4 +1,4 @@
-export type RegisterBody = {
+export type RegisterReqBody = {
   email: string
   global_name: string
   username: string

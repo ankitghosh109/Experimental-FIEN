@@ -1,13 +1,12 @@
-import { z } from "zod/v4"
-import type { RegisterBody } from "../../types/registerBodyDTO.types"
+import type { RegisterReqBody } from "../../types/authController/registerReqBody.types"
 import { registerFormValidationSchema } from "./schema/ZodSchema/registerFormValidationSchema"
 
-export function registerFormValidator(form: RegisterBody) {
+export function registerFormValidator(form: RegisterReqBody) {
   // const { email, username, global_name, password, date_of_birth } = form
   return registerFormValidationSchema.safeParse(form)
 }
 
-// export function registerFormValidator(form: RegisterBody) {
+// export function registerFormValidator(form: RegisterReqBody) {
 //   const { email, username, global_name, password, date_of_birth } = form
 // helper will used here
 // z.flattenError(error)
@@ -69,8 +68,8 @@ export function registerFormValidator(form: RegisterBody) {
 
 // class variant
 // class registerFormValidator {
-//   private form: RegisterBody
-//   constructor(form: RegisterBody) {
+//   private form: RegisterReqBody
+//   constructor(form: RegisterReqBody) {
 //     this.form = form
 //   }
 

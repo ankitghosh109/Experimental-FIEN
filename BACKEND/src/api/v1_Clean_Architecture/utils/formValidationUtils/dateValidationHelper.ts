@@ -1,5 +1,4 @@
-import type { date_of_birth } from "../../types/registerBodyDTO.types"
-
+import type { date_of_birth } from "../../types/authController/registerReqBody.types"
 
 // year, monthName, day
 export function isDateValid(date_of_birth: date_of_birth) {
@@ -29,4 +28,3 @@ export function isDateInFuture(date_of_birth: date_of_birth) {
 
   return date > now
 }
-

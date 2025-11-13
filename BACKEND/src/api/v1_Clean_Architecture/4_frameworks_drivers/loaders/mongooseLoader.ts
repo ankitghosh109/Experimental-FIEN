@@ -12,6 +12,6 @@ export default async function mongooseLoader() {
 
 process.on("SIGINT", async () => {
   mongoose.disconnect()
-    console.log("Database Disconnected");
+    console.log("🤯 mongoDB Disconnected");
     process.exit(0)
 })

@@ -1,21 +1,34 @@
-import type { IUserRepository } from "../interfaces/IUserRepository";
+import { getRedisClient } from "../../4_frameworks_drivers/loaders/redisClient"
+import type { LoginReqBody } from "../../types/authController/loginReqBody.types"
+import { loginUserUseCaseBusinessValidator } from "../Business_validation/loginUserUseCaseBusinessValidation"
+import type { IUserRepository } from "../interfaces/IUserRepository"
 
 // usecases/loginUser.js
 export default class LoginUserUseCase {
-  private userRepository : IUserRepository
+  private userRepository: IUserRepository
 
   constructor(userRepository: IUserRepository) {
-    this.userRepository = userRepository;
+    this.userRepository = userRepository
   }
-  async execute({ email, password }: {
-    email: string, password: string
-  }) {
-    // 1. Retrieve user by email
-    const user = await this.userRepository.findByEmail(email);
-    if (!user) throw new Error('Invalid credentials');
-    // 2. Verify password
-    // const match = await someCompareFunction(password, user.hashedPassword);
-    // if (!match) throw new Error('Invalid credentials');
+  async execute(form: LoginReqBody) {
+    const { login, password } = form
+
+    const { success, data: senitizedData, error } = await loginUserUseCaseBusinessValidator(
+      { login, password },
+      this.userRepository
+    )
+
+    if (!success) {
+      console.log(error)
+      return { success, error: error }
+    }
+
+    
+
+    
+
+  
+
     // 3. (Optional) generate auth token or session here
     // return { userId: user.id /*, token: ... */ };
     return
