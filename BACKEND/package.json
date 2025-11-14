@@ -1,13 +1,15 @@
 {
   "type": "module",
   "scripts": {
-    "ts-dev": "dotenv --env-file=.env -- tsx watch ./src/api/v1_Clean_Architecture/server.ts",
-    "ts-dev-2": "tsc --noEmit && dotenv --env-file=.env -- tsx watch ./src/api/v1_Clean_Architecture/server.ts",
-    "js-dev": "node --watch --env-file=.env ./src/api/v1_MVC/server.js"
+    "ts-dev": "tsx watch ./src/api/v1_Clean_Architecture/server.ts",
+    "ts-dev-2": "tsc --noEmit && dotenv --env-file=.env.local -- tsx watch ./src/api/v1_Clean_Architecture/server.ts",
+    "js-dev": "node --watch --env-file=.env.local ./src/api/v1_MVC/server.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^4.21.2",
     "mongoose": "^8.19.1",
     "morgan": "^1.10.1",
@@ -16,11 +18,11 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.5",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.7.0",
-    "dotenv-cli": "^11.0.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }

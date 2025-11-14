@@ -18,24 +18,22 @@ export async function loginUserUseCaseBusinessValidator(
     .superRefine(async (data, context) => {
       const { login, password } = data
 
-      if (!(await userRepository.doesExists({ email: login }))) {
-        context.addIssue({
-          code: "custom",
-          message: error_for_fields.invalid_login.message,
-        })
-        return
-      }
-
       const QueryResult = await userRepository.findPassByEmail(login)
-      if (
-        QueryResult &&
-        !(await bcrypt.compare(password, QueryResult.password))
-      ) {
+      if (!QueryResult) {
         context.addIssue({
           code: "custom",
           message: error_for_fields.invalid_login.message,
         })
         return
+      } else if (QueryResult) {
+        const isMatch = bcrypt.compare(password, QueryResult.password)
+        if (!isMatch) {
+          context.addIssue({
+            code: "custom",
+            message: error_for_fields.invalid_login.message,
+          })
+          return
+        }
       }
     })
 

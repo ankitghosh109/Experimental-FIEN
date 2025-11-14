@@ -1,5 +1,6 @@
-import { getRedisClient } from "../../4_frameworks_drivers/loaders/redisClient"
+import { getRedisClient } from "../../4_frameworks_drivers/loaders/singleton loaders/redisClient"
 import type { LoginReqBody } from "../../types/authController/loginReqBody.types"
+import assignSession from "../../utils/useCaseUtils/loginUserUseCaseUtils/assignSession"
 import { loginUserUseCaseBusinessValidator } from "../Business_validation/loginUserUseCaseBusinessValidation"
 import type { IUserRepository } from "../interfaces/IUserRepository"
 
@@ -12,25 +13,21 @@ export default class LoginUserUseCase {
   }
   async execute(form: LoginReqBody) {
     const { login, password } = form
-
-    const { success, data: senitizedData, error } = await loginUserUseCaseBusinessValidator(
+    const {
+      success,
+      data: senitizedData,
+      error,
+    } = await loginUserUseCaseBusinessValidator(
       { login, password },
       this.userRepository
     )
-
     if (!success) {
       console.log(error)
       return { success, error: error }
     }
 
-    
-
-    
-
-  
-
-    // 3. (Optional) generate auth token or session here
-    // return { userId: user.id /*, token: ... */ };
-    return
+    const cookieToSet = await assignSession(login, this.userRepository)
+    if (!cookieToSet) return null
+    return { cookieToSet }
   }
 }

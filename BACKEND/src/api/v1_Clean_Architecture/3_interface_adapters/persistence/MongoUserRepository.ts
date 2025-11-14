@@ -30,6 +30,7 @@ export default class MongoUserRepository implements IUserRepository {
   }
   async doesExists(searchQuery: object) {
     const data = await UserModel.exists(searchQuery)
+    if (!data) return null
     return data
   }
   // ... (other methods: findById, etc.)

@@ -1,8 +1,10 @@
 import { createClient } from "redis"
 
-let redisClient: ReturnType<typeof createClient> | null = null
+export type MyRedisClient = ReturnType<typeof createClient>
 
-export async function getRedisClient() {
+let redisClient: MyRedisClient | null = null
+
+export async function getRedisClient(): Promise<MyRedisClient> {
   if (!redisClient) {
     redisClient = createClient()
 
@@ -19,7 +21,7 @@ export async function getRedisClient() {
 }
 
 process.on("SIGINT", async () => {
-  redisClient?.quit();
-  console.log("🤯 Redis Disconnected!");
-  process.exit(0);
-});
+  redisClient?.quit()
+  console.log("🤯 Redis Disconnected!")
+  process.exit(0)
+})

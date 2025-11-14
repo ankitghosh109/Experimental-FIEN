@@ -75,12 +75,27 @@ export default class AuthController {
       } = loginFormValidator({ login, password })
 
       if (!success) {
+        console.log(error)
         return res.end()
       }
 
       const UseCaseResponse = await this.loginUserUseCase.execute(sanitizedData)
-      res.status(200).json({ success: true, data: result })
+      if (!UseCaseResponse) {
+        return res.end()
+      }
+
+      const { cookieToSet } = UseCaseResponse
+
+      if (!cookieToSet) {
+        return res.end()
+      }
+
+      res
+        .cookie(cookieToSet.name, cookieToSet.value, cookieToSet.config)
+        .status(200)
+        .json({ success: true })
     } catch (err: any) {
+      console.log(err)
       res.status(401).json({ success: false, error: err.message })
     }
   }

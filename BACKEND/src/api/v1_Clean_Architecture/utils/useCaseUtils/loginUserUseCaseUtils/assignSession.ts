@@ -1,26 +1,66 @@
 import type { IUserRepository } from "../../../2_application/interfaces/IUserRepository"
-import { getRedisClient } from "../../../4_frameworks_drivers/loaders/redisClient"
+import {
+  getRedisClient,
+  type MyRedisClient,
+} from "../../../4_frameworks_drivers/loaders/singleton loaders/redisClient"
 
-function assignSession(userRepository: IUserRepository) {
-      const redisClient = await getRedisClient()
+type SearchResult = {
+  total: number
+  documents: {
+    id: string
+    value: any
+  }[]
+}
 
-    userRepository.findIdByEmail(senitizedData.login)
+export default async function assignSession(
+  loginEmail: string,
+  userRepository: IUserRepository
+) {
+  const QueryResult = await userRepository.findIdByEmail(loginEmail)
 
-    const allSessions = await redisClient.ft.search(
-      "userIdINDEX",
-      `@userId:{${}}`
-    )
+  if (!QueryResult) return null
 
-    if (allSessions.total >= 2) {
-    await redisClient.del(allSessions.documents[0].id)
+  const redisClient: MyRedisClient = await getRedisClient()
+  const allSessions = (await redisClient.ft.search(
+    "userIdINDEX",
+    `@userId:{${QueryResult._id.toString()}}`,{
+      RETURN: []
+    }
+  )) as SearchResult
+
+  console.log(allSessions);
+  if (!allSessions) return null
+
+  if (allSessions.total >= 3) {
+    if (allSessions.documents[0]) {
+      await redisClient.del(allSessions.documents[0].id)
+    } else {
+      return null
+    }
   }
 
   const sessionId = crypto.randomUUID()
-  const  sessionExpiryTime = 1000 *60 *60 *24 * 7
+  const sessionExpiryTime = 1000 * 60 * 60 * 24 * 7
 
   const redisKey = `FIEN:session:${sessionId}`
 
-  await redisClient.multi().json.set(redisKey, "$", {
-    userId:user._id,
-  }).expire(redisKey, sessionExpiryTime /1000).exec()
-    }
+  await redisClient
+    .multi()
+    .json.set(redisKey, "$", {
+      userId: QueryResult._id.toString(),
+    })
+    .expire(redisKey, sessionExpiryTime / 1000)
+    .exec()
+
+  const cookieToSet = {
+    name: "sid",
+    value: sessionId,
+    config: {
+      httpOnly: true,
+      signed: true,
+      maxAge: sessionExpiryTime,
+    },
+  }
+
+  return cookieToSet
+}
