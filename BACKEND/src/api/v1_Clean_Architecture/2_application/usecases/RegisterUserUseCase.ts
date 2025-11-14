@@ -34,10 +34,10 @@ export default class RegisterUserUseCase {
     }
 
     const userFactory = new UserFactory(UserEntity)
-    const toRegister = userFactory.createUserEntity(sanitizedData)
+    const userToRegister = userFactory.createUserEntity(sanitizedData)
 
-    this.userRepository.save(toRegister)
+    this.userRepository.save(userToRegister)
 
-    return { success: true, data: { _id: toRegister._id } }
+    return { success: true, data: { _id: userToRegister._id } }
   }
 }

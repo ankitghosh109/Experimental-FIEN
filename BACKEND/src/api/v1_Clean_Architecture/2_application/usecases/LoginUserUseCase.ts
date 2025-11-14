@@ -21,13 +21,17 @@ export default class LoginUserUseCase {
       { login, password },
       this.userRepository
     )
+
     if (!success) {
       console.log(error)
       return { success, error: error }
     }
 
-    const cookieToSet = await assignSession(login, this.userRepository)
-    if (!cookieToSet) return null
-    return { cookieToSet }
+    const cookieToSet = await assignSession(
+      senitizedData.login,
+      this.userRepository
+    )
+    if (!cookieToSet) return { success:false, error: null }
+    return { success, data: { cookieToSet } }
   }
 }

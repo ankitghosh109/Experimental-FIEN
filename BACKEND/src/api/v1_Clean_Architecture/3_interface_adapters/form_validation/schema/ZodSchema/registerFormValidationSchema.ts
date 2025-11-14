@@ -4,11 +4,11 @@ import { commonPasswords } from "../../../../2_application/constants/passwordCon
 import {
   isDateInFuture,
   isDateValid,
-} from "../../../../utils/formValidationUtils/dateValidationHelper"
+} from "../../../../utils/controllerUtils/formValidationUtils/dateValidationHelper"
 import {
   isPasswordRepeatedPattern,
   isPasswordSequential,
-} from "../../../../utils/formValidationUtils/passwordValidationHelper"
+} from "../../../../utils/controllerUtils/formValidationUtils/passwordValidationHelper"
 
 export const registerFormValidationSchema = z.object({
   email: z.email(),

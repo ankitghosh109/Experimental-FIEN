@@ -29,7 +29,6 @@ export default async function assignSession(
   )) as SearchResult
 
   console.log(allSessions);
-  if (!allSessions) return null
 
   if (allSessions.total >= 3) {
     if (allSessions.documents[0]) {

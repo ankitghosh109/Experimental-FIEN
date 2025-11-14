@@ -26,7 +26,7 @@ export async function loginUserUseCaseBusinessValidator(
         })
         return
       } else if (QueryResult) {
-        const isMatch = bcrypt.compare(password, QueryResult.password)
+        const isMatch =await bcrypt.compare(password, QueryResult.password)
         if (!isMatch) {
           context.addIssue({
             code: "custom",

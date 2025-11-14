@@ -41,22 +41,27 @@ export default class AuthController {
         console.log(error)
         return res
           .status(400)
-          .json({ error: z.flattenError(error).fieldErrors })
+          .json({ success, error: z.flattenError(error).fieldErrors })
       }
       const UseCaseResponse = await this.registerUserUseCase.execute(
         sanitizedData
       )
       if (!UseCaseResponse.success) {
         if (UseCaseResponse.error) {
-          return res
-            .status(400)
-            .json({ error: z.flattenError(UseCaseResponse.error).fieldErrors })
+          console.log(UseCaseResponse.error)
+          return res.status(400).json({
+            success: UseCaseResponse.success,
+            error: z.flattenError(UseCaseResponse.error).fieldErrors,
+          })
         }
       }
 
       res.status(201).json({
         success: true,
-        data: UseCaseResponse.data,
+        data: {
+          message: "Successfully Registered!!!",
+          userId: UseCaseResponse.data._id.toString(),
+        },
       })
     } catch (err: any) {
       console.log(err)
@@ -76,24 +81,25 @@ export default class AuthController {
 
       if (!success) {
         console.log(error)
-        return res.end()
+        return res.status(401).json({ success: false, error: error })
       }
 
       const UseCaseResponse = await this.loginUserUseCase.execute(sanitizedData)
-      if (!UseCaseResponse) {
-        return res.end()
+      if (!UseCaseResponse.success) {
+        console.log(UseCaseResponse.error)
+        return res
+          .status(401)
+          .json({ success: UseCaseResponse.success, error: UseCaseResponse.error })
       }
-
-      const { cookieToSet } = UseCaseResponse
-
-      if (!cookieToSet) {
-        return res.end()
-      }
-
+      const { data } = UseCaseResponse
       res
-        .cookie(cookieToSet.name, cookieToSet.value, cookieToSet.config)
+        .cookie(
+          data!.cookieToSet.name,
+          data!.cookieToSet.value,
+          data!.cookieToSet.config
+        )
         .status(200)
-        .json({ success: true })
+        .json({ success: true, data: { message: "Successfully logged!!!" } })
     } catch (err: any) {
       console.log(err)
       res.status(401).json({ success: false, error: err.message })
